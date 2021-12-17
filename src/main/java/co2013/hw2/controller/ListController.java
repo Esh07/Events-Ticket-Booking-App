@@ -27,11 +27,11 @@ public class ListController {
 	@GetMapping("/list")
 	public String alltables(Model model) {
 		model.addAttribute("vendors", Vendorrepo.findAll());
-		model.addAttribute("Customer", Customerrepo.findAll());
+		model.addAttribute("customers", Customerrepo.findAll());
 
-		model.addAttribute("Ticket", Ticketrepo.findAll());
+		model.addAttribute("tickets", Ticketrepo.findAll());
 
-		model.addAttribute("Payment", Paymentrepo.findAll());
+		model.addAttribute("payments", Paymentrepo.findAll());
 		return "list";
 	}
 	

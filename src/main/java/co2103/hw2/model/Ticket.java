@@ -21,10 +21,14 @@ public class Ticket {
 	private String ticketName;
 	private double ticketPrice;
 
+<<<<<<< HEAD
 	@OneToOne(cascade = CascadeType.ALL)
 	private Payment payment;
 		
 	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy="tickets")
+=======
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+>>>>>>> 0ed0e509386fbb98c11af5b4321adc38b26b8729
 	private Set<Customer> customers  = new HashSet<>();
 
 	/**

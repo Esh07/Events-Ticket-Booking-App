@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,17 +19,34 @@ public class Ticket {
 	
 	@Id
 	@GeneratedValue
+	private int ticketId;
+	/**
+	 * @return the ticketId
+	 */
+	public int getTicketId() {
+		return ticketId;
+	}
+
+
+	/**
+	 * @param ticketId the ticketId to set
+	 */
+	public void setTicketId(int ticketId) {
+		this.ticketId = ticketId;
+	}
+
+
 	private String ticketName;
 	private double ticketPrice;
 
-<<<<<<< HEAD
+	@ManyToOne
+	private Vendor vendor;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Payment payment;
 		
+
 	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy="tickets")
-=======
-	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
->>>>>>> 0ed0e509386fbb98c11af5b4321adc38b26b8729
 	private Set<Customer> customers  = new HashSet<>();
 
 	/**
@@ -61,9 +79,28 @@ public class Ticket {
 	public void setTicketPrice(double ticketPrice) {
 		this.ticketPrice = ticketPrice;
 	}
+
+
+	/**
+	 * @return the vendor
+	 */
+	public Vendor getVendor() {
+		return vendor;
+	}
+
+
+	/**
+	 * @param vendor the vendor to set
+	 */
+	public void setVendor(Vendor vendor) {
+		this.vendor = vendor;
+	}
 	
 	
-	
+	public void addCustomers(Customer customer) {
+		this.customers.add(customer);
+		customer.getTickets().add(this);
+	}
 	
 	
 }

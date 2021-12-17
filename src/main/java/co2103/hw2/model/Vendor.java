@@ -128,6 +128,10 @@ public class Vendor {
 		public void setEmail(String email) {
 			this.email = email;
 		}
+		public void addTicket(Ticket t1) {
+			this.tickets.add(t1);
+			t1.setVendor(this);		
+		}
 		
 		
 }

@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity(name="Customer")
@@ -20,7 +20,7 @@ public class Customer {
 	@GeneratedValue
 	@Column(name="customer_Id", nullable = false)
 	private int customerId; 
-	@Column(name="customer_name", nullable = false)
+	@Column(name="customer_name", nullable = true)
 	private String customerName;
 	
 	private String address_line_1;
@@ -34,12 +34,26 @@ public class Customer {
 	@Column(length = 255)
 	private String email;
 	
-	@OneToMany(
+	@ManyToMany(
 			fetch = FetchType.LAZY,
-			cascade = {CascadeType.MERGE, CascadeType.PERSIST}, 
-			mappedBy ="customers"
+			cascade = {CascadeType.MERGE, CascadeType.PERSIST}
+			
 			)
 	private Set<Ticket> tickets= new HashSet<>();
+
+	/**
+	 * @return the tickets
+	 */
+	public Set<Ticket> getTickets() {
+		return tickets;
+	}
+
+	/**
+	 * @param tickets the tickets to set
+	 */
+	public void setTickets(Set<Ticket> tickets) {
+		this.tickets = tickets;
+	}
 
 	public Customer(int id, String name, String address_line_1, String address_line_2, String city, String zipcode,
 			int tel, String email) {
@@ -52,7 +66,9 @@ public class Customer {
 		this.tel = tel;
 		this.email = email;
 	}
-	
+	public Customer() {
+		
+	}
 	/**
 	 * @return the id
 	 */

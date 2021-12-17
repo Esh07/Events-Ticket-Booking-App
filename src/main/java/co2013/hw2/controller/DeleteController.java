@@ -1,9 +1,6 @@
 package co2013.hw2.controller;
 
-<<<<<<< HEAD
-public class DeleteController {
 
-=======
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +16,6 @@ public class DeleteController {
 	private TicketRepository Ticketrepo;
 	
 
-	
 	@Autowired
 	private CustomerRepository Customerrepo;
 	
@@ -62,5 +58,4 @@ public class DeleteController {
 		}
 		return "redirect:/list";
 	}
->>>>>>> 0ed0e509386fbb98c11af5b4321adc38b26b8729
 }

@@ -41,7 +41,7 @@ public class Ticket {
 
 	@ManyToOne
 	private Vendor vendor;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Payment payment;
 		

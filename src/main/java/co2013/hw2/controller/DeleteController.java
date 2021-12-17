@@ -58,4 +58,5 @@ public class DeleteController {
 		}
 		return "redirect:/list";
 	}
+
 }

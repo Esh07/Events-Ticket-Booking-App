@@ -18,7 +18,7 @@ public class Payment {
 	private double ticket_price;
 	
 
-	@OneToOne(mappedBy="ticket")
+	@OneToOne(mappedBy="payment")
 	private Ticket ticket;
 
 

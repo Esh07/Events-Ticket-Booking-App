@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -20,6 +21,9 @@ public class Ticket {
 	private String ticketName;
 	private double ticketPrice;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	private Payment payment;
+		
 	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy="tickets")
 	private Set<Customer> customers  = new HashSet<>();
 

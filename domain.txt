@@ -44,5 +44,9 @@ Payment Class (@OneToOne)
 - Only 1 payment belong to 1 booking and each booking has 1 payment.  
 
 Order of deletion:
+Customer
+ticket
+Payment
+Vendor
 
 

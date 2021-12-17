@@ -20,7 +20,7 @@ public class Ticket {
 	private String ticketName;
 	private double ticketPrice;
 
-	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy="tickets")
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private Set<Customer> customers  = new HashSet<>();
 
 	/**

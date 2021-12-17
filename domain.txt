@@ -8,15 +8,15 @@ My domain includes vendor, customer, and event tickets. Vendor selling tickets t
 
 a vendor has vendor id, name, full address, telephone number and email.
 
-- Vendor can sell only one location tickets and one location ticket only sell by one vendor. @OneToOne
+- one vendor can sell many tickets and many tickets can be one vednor. @OneToMany
 
  
 
 2. Ticket (Class)
 
-ticket has ticket number, vendor id, location name, location address, customer name, created date and expire date.
+ticket has ticket number, ticket price.
 s
--  each ticket only belong to one customer and many tickets can belong to many customers or one customer. If ticket cancel or delete, then it will remove from customer. @OneToMany
+-  each ticket only have one payment and one payment only belong to one ticket. @OneToOne. 
 
  
 
@@ -24,25 +24,15 @@ s
 
 customer has customer number, customer full name, address, telephone number and email address.
 
-- Many customers can book tickets from many vendors. @ManyToOne
+- Many customers can book many tickets and many ticket can be belongs to one customer. @ManyToMany
 
 - if customer deleted then ticket will be removed from customer too.
 
- 
-
-4. Booking
-
-booking has booking number, ticket number, booking date, customer full name, customer address, customer email address and amount.
-
-- Many tickets can be booked by one person.
-
--one person can book ticket for many events.
 
 ________***********
 
 Payment Class (@OneToOne)
-- Only 1 payment belong to 1 booking and each booking has 1 payment.  
-
+- Only 1 payment belong to 1 ticket and each ticket has 1 payment.  
 Order of deletion:
 
 

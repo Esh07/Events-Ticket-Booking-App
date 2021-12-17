@@ -18,6 +18,8 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	runtime 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.39' // jsps
+	runtime 'javax.servlet:jstl:1.2' // helpful JSP tags
 }
 
 test {

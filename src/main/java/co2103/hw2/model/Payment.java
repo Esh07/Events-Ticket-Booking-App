@@ -4,72 +4,76 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="payment")
+@Entity(name="Payment")
+@Table(name="Payment")
 public class Payment {
 	@Id
 	@GeneratedValue
-	private int paymentID;
-	private int cardNumber;
+	private int PaymentID;
+	private int cardnumber;
 	private LocalDate paymentDate;
-	private double ticketAmount;
+	private double ticket_price;
 	
-	public Payment(int paymentID, int cardNumber, LocalDate paymentDate, double ticketAmount) {
-		this.paymentID = paymentID;
-		this.cardNumber = cardNumber;
-		this.paymentDate = paymentDate;
-		this.ticketAmount = ticketAmount;
-	}
-	/**
-	 * @return the paymentID
-	 */
+
+	@OneToOne(mappedBy="ticket")
+	private Ticket ticket;
+
+
 	public int getPaymentID() {
-		return paymentID;
+		return PaymentID;
 	}
-	/**
-	 * @param paymentID the paymentID to set
-	 */
+
+
 	public void setPaymentID(int paymentID) {
-		this.paymentID = paymentID;
+		PaymentID = paymentID;
 	}
-	/**
-	 * @return the cardNumber
-	 */
-	public int getCardNumber() {
-		return cardNumber;
+
+
+	public int getCardnumber() {
+		return cardnumber;
 	}
-	/**
-	 * @param cardNumber the cardNumber to set
-	 */
-	public void setCardNumber(int cardNumber) {
-		this.cardNumber = cardNumber;
+
+
+	public void setCardnumber(int cardnumber) {
+		this.cardnumber = cardnumber;
 	}
-	/**
-	 * @return the paymentDate
-	 */
+
+
 	public LocalDate getPaymentDate() {
 		return paymentDate;
 	}
-	/**
-	 * @param paymentDate the paymentDate to set
-	 */
+
+
 	public void setPaymentDate(LocalDate paymentDate) {
 		this.paymentDate = paymentDate;
 	}
-	/**
-	 * @return the ticketAmount
-	 */
-	public double getTicketAmount() {
-		return ticketAmount;
+
+
+	public double getTicket_price() {
+		return ticket_price;
 	}
-	/**
-	 * @param ticketAmount the ticketAmount to set
-	 */
-	public void setTicketAmount(double ticketAmount) {
-		this.ticketAmount = ticketAmount;
+
+
+	public void setTicket_price(double ticket_price) {
+		this.ticket_price = ticket_price;
 	}
+
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+	
+	
+	
+
 	
 	
 	

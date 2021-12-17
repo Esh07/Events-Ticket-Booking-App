@@ -1,27 +1,27 @@
 package co2103.hw2.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
 @Entity(name="Ticket")
-@Table(name="ticket")
+@Table(name="Ticket")
 public class Ticket {
+	
 	@Id
 	@GeneratedValue
 	private String ticketName;
 	private double ticketPrice;
-	
-	
-	
-	public Ticket(String ticketName, double ticketPrice) {
-		super();
-		this.ticketName = ticketName;
-		this.ticketPrice = ticketPrice;
-	}
 
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy="tickets")
+	private Set<Customer> customers  = new HashSet<>();
 
 	/**
 	 * @return the ticketName
@@ -53,6 +53,8 @@ public class Ticket {
 	public void setTicketPrice(double ticketPrice) {
 		this.ticketPrice = ticketPrice;
 	}
+	
+	
 	
 	
 	

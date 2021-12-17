@@ -1,5 +1,6 @@
 package co2103.hw2.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name="Customer")
-@Table(name="customer")
+@Table(name="Customer")
 public class Customer {
 	
 	@Id
@@ -35,10 +36,10 @@ public class Customer {
 	
 	@OneToMany(
 			fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL, 
-			mappedBy ="customer"
+			cascade = {CascadeType.MERGE, CascadeType.PERSIST}, 
+			mappedBy ="customers"
 			)
-	private Set<TicketBooking> ticketBookingSet;
+	private Set<Ticket> tickets= new HashSet<>();
 
 	public Customer(int id, String name, String address_line_1, String address_line_2, String city, String zipcode,
 			int tel, String email) {

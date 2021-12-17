@@ -1,6 +1,7 @@
 package co2103.hw2.model;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -26,10 +27,10 @@ public class Vendor {
 		
 		@OneToMany(
 				fetch = FetchType.LAZY,
-				cascade = CascadeType.ALL, 
+				cascade = {CascadeType.MERGE, CascadeType.PERSIST}, 
 				mappedBy ="vendor"
 				)
-		private Set<TicketBooking> ticketBookingSet;
+		private List<Ticket> tickets = new ArrayList<>();
 		
 		/**
 		 * @return the id

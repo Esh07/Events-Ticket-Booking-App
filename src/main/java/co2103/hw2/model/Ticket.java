@@ -1,13 +1,19 @@
 package co2103.hw2.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="Ticket")
+
+@Entity(name="Ticket")
+@Table(name="ticket")
 public class Ticket {
+	@Id
+	@GeneratedValue
 	private String ticketName;
 	private double ticketPrice;
+	
 	
 	
 	public Ticket(String ticketName, double ticketPrice) {

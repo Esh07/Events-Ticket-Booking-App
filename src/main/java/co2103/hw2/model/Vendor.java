@@ -1,17 +1,22 @@
 package co2103.hw2.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="Customer")
+@Entity(name="Vendor")
+@Table(name="vendor")
 public class Vendor {
 		@Id
 		@GeneratedValue
-		private int id; 
-		private String name;
+		private int vendorId; 
+		private String vendorName;
 		private String address_line_1;
 		private String address_line_2;
 		private String city;
@@ -19,29 +24,36 @@ public class Vendor {
 		private int tel;
 		private String email;
 		
+		@OneToMany(
+				fetch = FetchType.LAZY,
+				cascade = CascadeType.ALL, 
+				mappedBy ="vendor"
+				)
+		private Set<TicketBooking> ticketBookingSet;
+		
 		/**
 		 * @return the id
 		 */
-		public int getId() {
-			return id;
+		public int getvendorId() {
+			return vendorId;
 		}
 		/**
 		 * @param id the id to set
 		 */
-		public void setId(int id) {
-			this.id = id;
+		public void setvendorId(int id) {
+			this.vendorId = id;
 		}
 		/**
 		 * @return the name
 		 */
-		public String getName() {
-			return name;
+		public String getvendorName() {
+			return vendorName;
 		}
 		/**
 		 * @param name the name to set
 		 */
-		public void setName(String name) {
-			this.name = name;
+		public void setvendorName(String name) {
+			this.vendorName = name;
 		}
 		/**
 		 * @return the address_line_1

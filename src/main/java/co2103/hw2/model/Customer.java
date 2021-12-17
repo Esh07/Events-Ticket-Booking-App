@@ -1,34 +1,49 @@
 package co2103.hw2.model;
 
-import java.util.ArrayList;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="Customer")
+@Entity(name="Customer")
+@Table(name="customer")
 public class Customer {
 	
 	@Id
 	@GeneratedValue
-	private int id; 
-	private String name;
+	@Column(name="customer_Id", nullable = false)
+	private int customerId; 
+	@Column(name="customer_name", nullable = false)
+	private String customerName;
+	
 	private String address_line_1;
 	private String address_line_2;
+	@Column(length = 30)
 	private String city;
+	@Column(length = 30)
 	private String zipcode;
+	@Column(length = 10)
 	private int tel;
+	@Column(length = 255)
 	private String email;
 	
-	
+	@OneToMany(
+			fetch = FetchType.LAZY,
+			cascade = CascadeType.ALL, 
+			mappedBy ="customer"
+			)
+	private Set<TicketBooking> ticketBookingSet;
 
 	public Customer(int id, String name, String address_line_1, String address_line_2, String city, String zipcode,
 			int tel, String email) {
-		super();
-		this.id = id;
-		this.name = name;
+		this.customerId = id;
+		this.customerName = name;
 		this.address_line_1 = address_line_1;
 		this.address_line_2 = address_line_2;
 		this.city = city;
@@ -40,29 +55,29 @@ public class Customer {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
-		return id;
+	public int getcustomerId() {
+		return customerId;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setcustomerId(int id) {
+		this.customerId = id;
 	}
 
 	/**
 	 * @return the name
 	 */
 	public String getName() {
-		return name;
+		return customerName;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
-		this.name = name;
+		this.customerName = name;
 	}
 
 	/**

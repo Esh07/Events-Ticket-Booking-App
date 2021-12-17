@@ -1,23 +1,35 @@
 package co2103.hw2.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="Venue")
+@Entity(name="Venue")
+@Table(name="venue")
 public class Venue {
+	
 	@Id
-	private String name;
+	private String venueName;
 	private String address_line_1;
 	private String address_line_2;
 	private String city;
 	private String zipcode;
 	
+	@ManyToMany(
+			fetch = FetchType.LAZY,
+			cascade = CascadeType.ALL, 
+			mappedBy ="venue"
+			)
+	private Set<Event> venueEvents;
 	
 	public Venue(String name, String address_line_1, String address_line_2, String city, String zipcode) {
 		super();
-		this.name = name;
+		this.venueName = name;
 		this.address_line_1 = address_line_1;
 		this.address_line_2 = address_line_2;
 		this.city = city;
@@ -25,20 +37,29 @@ public class Venue {
 	}
 
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
+
 
 
 	/**
-	 * @param name the name to set
+	 * @return the venueName
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public String getVenueName() {
+		return venueName;
 	}
+
+
+
+
+
+	/**
+	 * @param venueName the venueName to set
+	 */
+	public void setVenueName(String venueName) {
+		this.venueName = venueName;
+	}
+
+
+
 
 
 	/**
@@ -103,6 +124,25 @@ public class Venue {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+
+
+	/**
+	 * @return the venueEvents
+	 */
+	public Set<Event> getVenueEvents() {
+		return venueEvents;
+	}
+
+
+	/**
+	 * @param venueEvents the venueEvents to set
+	 */
+	public void setVenueEvents(Set<Event> venueEvents) {
+		this.venueEvents = venueEvents;
+	}
+
+
+
 	
 	
 	

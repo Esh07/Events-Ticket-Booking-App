@@ -1,18 +1,13 @@
 package co2103.hw2.model;
 
 import java.time.LocalDate;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Payment")
+@Table(name="payment")
 public class Payment {
 	@Id
 	@GeneratedValue
@@ -21,11 +16,7 @@ public class Payment {
 	private LocalDate paymentDate;
 	private double ticketAmount;
 	
-	@OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true) 
-	List<Customer> customers;
-	
 	public Payment(int paymentID, int cardNumber, LocalDate paymentDate, double ticketAmount) {
-		super();
 		this.paymentID = paymentID;
 		this.cardNumber = cardNumber;
 		this.paymentDate = paymentDate;

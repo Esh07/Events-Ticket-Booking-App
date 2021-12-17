@@ -1,19 +1,15 @@
 package co2103.hw2.model;
 
 import java.time.LocalDate;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="Event")
+@Entity(name="Event")
+@Table(name="event")
 public class Event {
 	@Id
 	@GeneratedValue
@@ -21,12 +17,10 @@ public class Event {
 	private String eventDescription;
 	private LocalDate eventDate;
 	
-	@ManyToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL) 
-	@JoinColumn
-	private List<Venue> venues;
-	
-	
-	
+
+	@ManyToMany
+	@JoinColumn(name = "venueName")
+	private Venue venue;
 	
 	public Event(int eventID, String eventDescription, LocalDate eventDate) {
 		super();
@@ -70,17 +64,8 @@ public class Event {
 	public void setEventDate(LocalDate eventDate) {
 		this.eventDate = eventDate;
 	}
-	/**
-	 * @return the venues
-	 */
-	public List<Venue> getVenues() {
-		return venues;
-	}
-	/**
-	 * @param venues the venues to set
-	 */
-	public void setVenues(List<Venue> venues) {
-		this.venues = venues;
-	}
+
+	
+	
 	
 }

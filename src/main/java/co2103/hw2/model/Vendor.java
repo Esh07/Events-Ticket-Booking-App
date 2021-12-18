@@ -32,15 +32,11 @@ public class Vendor {
 				)
 		private List<Ticket> tickets = new ArrayList<>();
 		
-		/**
-		 * @return the id
-		 */
+		
 		public int getvendorId() {
 			return vendorId;
 		}
-		/**
-		 * @param id the id to set
-		 */
+		
 		public void setvendorId(int id) {
 			this.vendorId = id;
 		}

@@ -48,7 +48,6 @@
 	<c:forEach items="${tickets}" var="t">
 		<p>Ticket ID: ${t.getTicketId()}</p>
 		<p>Ticket Name:  ${t.getTicketName()}</p>
-		<p>Ticket Price:  ${t.getTicketPrice()}</p>
 		<p>Ticket Vendor:  ${t.getVendor().getvendorName()}</p>	
 		<a href="/deleteTicket?id=${t.getTicketId()}">Remove ticket</a>	
 	</c:forEach>

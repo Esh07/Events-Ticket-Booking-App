@@ -114,9 +114,7 @@ public class Ticket {
 	}
 
 
-	/**
-	 * @param payment the payment to set
-	 */
+	
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}

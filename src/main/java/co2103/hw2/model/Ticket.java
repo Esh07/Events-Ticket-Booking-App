@@ -1,6 +1,8 @@
 package co2103.hw2.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -49,6 +51,7 @@ public class Ticket {
 	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy="tickets")
 	private Set<Customer> customers  = new HashSet<>();
 
+	
 	/**
 	 * @return the ticketName
 	 */
@@ -100,6 +103,38 @@ public class Ticket {
 	public void addCustomers(Customer customer) {
 		this.customers.add(customer);
 		customer.getTickets().add(this);
+	}
+
+
+	/**
+	 * @return the payment
+	 */
+	public Payment getPayment() {
+		return payment;
+	}
+
+
+	/**
+	 * @param payment the payment to set
+	 */
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
+
+	/**
+	 * @return the customers
+	 */
+	public Set<Customer> getCustomers() {
+		return customers;
+	}
+
+
+	/**
+	 * @param customers the customers to set
+	 */
+	public void setCustomers(Set<Customer> customers) {
+		this.customers = customers;
 	}
 	
 	

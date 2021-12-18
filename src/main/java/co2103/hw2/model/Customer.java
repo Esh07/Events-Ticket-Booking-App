@@ -1,6 +1,8 @@
 package co2103.hw2.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -37,7 +39,6 @@ public class Customer {
 	@ManyToMany(
 			fetch = FetchType.LAZY,
 			cascade = {CascadeType.MERGE, CascadeType.PERSIST}
-			
 			)
 	private Set<Ticket> tickets= new HashSet<>();
 
@@ -181,10 +182,10 @@ public class Customer {
 		this.email = email;
 	}
 
-	/**
-	 * @return the customers
-	 */
-
+	public void addTicket(Ticket t1) {
+		this.tickets.add(t1);
+		t1.addCustomers(this);		
+	}
 
 
 

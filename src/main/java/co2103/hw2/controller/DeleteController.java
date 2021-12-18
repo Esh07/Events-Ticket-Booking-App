@@ -1,8 +1,9 @@
-package co2013.hw2.controller;
+package co2103.hw2.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co2103.hw2.repos.CustomerRepository;
@@ -27,11 +28,14 @@ public class DeleteController {
 	
 	
 	
-	@GetMapping("/deleteTicket")
+	
+	@RequestMapping("/deleteTicket")
 	public String deleteTicket(@RequestParam int id) {
 		if (Ticketrepo.findById(id).isPresent()) {
 			Ticketrepo.delete(Ticketrepo.findById(id).get());
+			System.out.println("It's working");
 		}
+		System.out.println("It's working");
 		return "redirect:/list";
 	}
 	
@@ -39,7 +43,9 @@ public class DeleteController {
 	public String deleteCustomer(@RequestParam int id) {
 		if (Customerrepo.findById(id).isPresent()) {
 			Customerrepo.delete(Customerrepo.findById(id).get());
+			System.out.println("It's working");
 		}
+		
 		return "redirect:/list";
 	}
 	

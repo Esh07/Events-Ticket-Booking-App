@@ -1,4 +1,4 @@
-package co2013.hw2.controller;
+package co2103.hw2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,13 +25,15 @@ public class ListController {
 	
 	
 	@GetMapping("/list")
-	public String alltables(Model model) {
+	public String alltables( 
+			Model model) {
 		model.addAttribute("vendors", Vendorrepo.findAll());
 		model.addAttribute("customers", Customerrepo.findAll());
 
 		model.addAttribute("tickets", Ticketrepo.findAll());
 
 		model.addAttribute("payments", Paymentrepo.findAll());
+		
 		return "list";
 	}
 	
